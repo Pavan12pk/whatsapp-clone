@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WhatsApp Clone</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body class="chat-page">
+    <div class="app-container">
+        <!-- Sidebar -->
+        <div class="sidebar">
+            <header class="sidebar-header">
+                <div class="user-info">
+                    <span>{{ session['user_name'] }}</span>
+                    <small>{{ session['user_phone'] }}</small>
+                </div>
+                <a href="{{ url_for('logout') }}" class="logout-btn">Logout</a>
+            </header>
+            
+            <div class="search-container">
+                <input type="text" placeholder="Search or start new chat">
+            </div>
+            
+            <div class="chats-list" id="chats-list">
+                <!-- Chats will be loaded here -->
+            </div>
+        </div>
+        
+        <!-- Main Chat Area -->
+        <div class="chat-area">
+            <div class="empty-chat">
+                <div class="empty-content">
+                    <img src="https://web.whatsapp.com/img/intro-connection-light_c98cc75f2aa905314d74375a975d2cf2.jpg" alt="WhatsApp">
+                    <h2>WhatsApp Web</h2>
+                    <p>Send and receive messages without keeping your phone online.</p>
+                    <p>Use WhatsApp on up to 4 linked devices and 1 phone at the same time.</p>
+                </div>
+            </div>
+            
+            <div class="active-chat" id="active-chat" style="display: none;">
+                <header class="chat-header">
+                    <div class="contact-info">
+                        <span id="contact-name"></span>
+                        <small id="contact-phone"></small>
+                    </div>
+                </header>
+                
+                <div class="messages-container" id="messages-container">
+                    <!-- Messages will appear here -->
+                </div>
+                
+                <div class="message-input-container">
+                    <form id="message-form">
+                        <input type="text" id="message-input" placeholder="Type a message" autocomplete="off">
+                        <button type="submit">Send</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Contacts Sidebar -->
+        <div class="contacts-sidebar" id="contacts-sidebar">
+            <header>
+                <h2>New Chat</h2>
+                <button id="close-contacts-btn">×</button>
+            </header>
+            <div class="contacts-list" id="contacts-list">
+                <!-- Contacts will be loaded here -->
+            </div>
+        </div>
+    </div>
+
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>
